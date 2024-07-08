@@ -51,11 +51,6 @@ class Circle(Shape):
         return math.pi * self.radius**2
 
 
-class Pentagram(Shape):
-    def getArea(self) -> float:
-        return super().getArea()
-
-
 class Triangle(Shape):
     def __init__(self, baselength: float, height: float):
         self.baselength = baselength

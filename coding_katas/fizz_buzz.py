@@ -17,7 +17,7 @@ Write a program that prints one line for each number from 1 to 100
 
 def create_return_text_if_dividable_function(divisor: int, replacement: str):
     def return_text_if_dividable(i: int) -> str:
-        return f"{'' if i % divisor else replacement}"
+        return "" if i % divisor else replacement
 
     return return_text_if_dividable
 

@@ -1,7 +1,7 @@
 from coding_katas.fizz_buzz import (
     fizzbuzz,
-    REPLACEMENT_ON_DIVIDABLE_FUNCTIONS,
-    create_replacement_on_dividable_function,
+    RETURN_TEXT_IF_DIVIDABLE_FUNCTIONS,
+    create_return_text_if_dividable_function,
 )
 
 
@@ -22,11 +22,11 @@ def test_fizzbuzz_returns_number_for_non_multiples():
 
 
 def test_fizzbuzz_is_open_for_extension():
-    NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS = REPLACEMENT_ON_DIVIDABLE_FUNCTIONS
+    NEW_RETURN_TEXT_IF_DIVIDABLE_FUNCTIONS = RETURN_TEXT_IF_DIVIDABLE_FUNCTIONS
 
-    NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS.append(
-        create_replacement_on_dividable_function(8, "Boink")
+    NEW_RETURN_TEXT_IF_DIVIDABLE_FUNCTIONS.append(
+        create_return_text_if_dividable_function(8, "Boink")
     )
     assert (
-        fizzbuzz(3 * 5 * 8, NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS) == "FizzBuzzBoink"
+        fizzbuzz(3 * 5 * 8, NEW_RETURN_TEXT_IF_DIVIDABLE_FUNCTIONS) == "FizzBuzzBoink"
     )

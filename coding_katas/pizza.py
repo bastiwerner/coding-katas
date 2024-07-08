@@ -23,23 +23,32 @@ The function is calculates the total cost of a pizza order based on the followin
 
 """
 
-def p(o):
-    t = 0
-    for i in o:
-        if i['t'] == 'S':
-            t += 10
-        elif i['t'] == 'M':
-            t += 12
-        elif i['t'] == 'L':
-            t += 15
-        if 'e' in i:
-            for e in i['e']:
-                if e == 'C':
-                    t += 1
-                if e == 'M':
-                    t += 1.5
-                if e == 'P':
-                    t += 2
-    if len(o) > 3:
-        t = t * 0.9
-    return t
+
+class PIZZA_SIZES:
+    SMALL = 10.0
+    MEDIUM = 12.0
+    LARGE = 15.0
+
+
+class EXTRA_TOPPINGS:
+    CHEESE = 1
+    MUSHROOM = 1.5
+    PEPPERONI = 2
+
+
+class Pizza:
+    def __init__(self, size: PIZZA_SIZES, extra_toppings: list[EXTRA_TOPPINGS] = []):
+        self.size = size
+        self.extra_toppings = extra_toppings
+
+    def calculate_price(self):
+        return self.size + sum(extra_topping for extra_topping in self.extra_toppings)
+
+
+class PizzaOrder:
+    def __init__(self, pizzas: list[Pizza]):
+        self.pizzas = pizzas
+
+    def calculate_total_price(self):
+        discount_factor = 0.9 if len(self.pizzas) > 3 else 1.0
+        return sum(pizza.calculate_price() for pizza in self.pizzas) * discount_factor

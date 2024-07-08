@@ -1,4 +1,8 @@
-from coding_katas.fizz_buzz import fizzbuzz
+from coding_katas.fizz_buzz import (
+    fizzbuzz,
+    REPLACEMENT_ON_DIVIDABLE_FUNCTIONS,
+    create_replacement_on_dividable_function,
+)
 
 
 def test_fizzbuzz_returns_fizz_for_multiples_of_three():
@@ -15,3 +19,14 @@ def test_fizzbuzz_returns_fizzbuzz_for_multiples_of_three_and_five():
 
 def test_fizzbuzz_returns_number_for_non_multiples():
     assert fizzbuzz(91) == 91
+
+
+def test_fizzbuzz_is_open_for_extension():
+    NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS = REPLACEMENT_ON_DIVIDABLE_FUNCTIONS
+
+    NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS.append(
+        create_replacement_on_dividable_function(8, "Boink")
+    )
+    assert (
+        fizzbuzz(3 * 5 * 8, NEW_REPLACEMENT_ON_DIVIDABLE_FUNCTIONS) == "FizzBuzzBoink"
+    )

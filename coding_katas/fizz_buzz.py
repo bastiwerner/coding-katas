@@ -15,5 +15,20 @@ Write a program that prints one line for each number from 1 to 100
 """
 
 
-def fizzbuzz(i: int) -> str | int:
-    return f"{'' if i % 3 else 'Fizz'}{'' if i % 5 else 'Buzz'}" or i
+def create_replacement_on_dividable_function(divisor: int, replacement: str):
+    def replace_on_dividable(i: int):
+        return f"{'' if i % divisor else replacement}"
+
+    return replace_on_dividable
+
+
+REPLACEMENT_ON_DIVIDABLE_FUNCTIONS = [
+    create_replacement_on_dividable_function(3, "Fizz"),
+    create_replacement_on_dividable_function(5, "Buzz"),
+]
+
+
+def fizzbuzz(
+    i: int, replacement_functions=REPLACEMENT_ON_DIVIDABLE_FUNCTIONS
+) -> str | int:
+    return "".join(func(i) for func in replacement_functions) or i

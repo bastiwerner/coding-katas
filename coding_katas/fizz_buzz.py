@@ -15,5 +15,5 @@ Write a program that prints one line for each number from 1 to 100
 """
 
 
-def fizzbuzz(i):
-    return f"{'' if i % 3 else 'Fizz'}{'' if i % 5 else 'Buzz' or i}"
+def fizzbuzz(i: int) -> str | int:
+    return f"{'' if i % 3 else 'Fizz'}{'' if i % 5 else 'Buzz'}" or i
